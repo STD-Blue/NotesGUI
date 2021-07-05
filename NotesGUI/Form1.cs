@@ -15,7 +15,7 @@ namespace NotesGUI
     {
         public string noteName { get; private set; }
         public int EmptyNote { get; private set; }
-       
+
         public Form1()
         {
             InitializeComponent();
@@ -43,7 +43,7 @@ namespace NotesGUI
         public string test { get; set; }
         private void Form1_Click(object sender, EventArgs e)
         {
-           
+
             File.WriteAllText("FindBtn.txt", $"{(sender as Button).Text}");
             Form note = new SelectedNote();
             this.Visible = false;
@@ -87,7 +87,7 @@ namespace NotesGUI
                             openFile.Filter = "Txt(.txt)|*.txt";
                             if (openFile.ShowDialog() == DialogResult.OK)
                             {
-                                Manager.CreateNote(noteName, File.ReadAllText(openFile.FileName), System.DateTime.UtcNow);
+                                Manager.CreateNote(noteName, File.ReadAllText(openFile.FileName), System.DateTime.Now);
                                 Notes.Find(x => x.Text == string.Empty).Visible = true;
                                 Notes.Find(x => x.Text == string.Empty).Text = noteName;
                             }
@@ -110,6 +110,21 @@ namespace NotesGUI
             settings.ShowDialog();
         }
 
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Manager.SaveAllNotes("TestSave");
+        }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+            Manager.ReadNotesFromFile("TestSave.txt");
+            for (int i = 0; i < Manager.notes.Count; i++)
+            {
+                Notes.Find(x => x.Text == string.Empty).Visible = true;
+                Notes.Find(x => x.Text == string.Empty).Text = Manager.notes[i].NoteName;
+            }
+
+        }
     }
 }
