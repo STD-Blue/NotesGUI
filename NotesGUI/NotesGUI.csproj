@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NotesDLL">
+      <HintPath>..\..\..\..\Desktop\Notes.DLL-2ad1cbedae44a286a9f4fc0a06b3a350ce700167\NotesDLL\NotesDLL\bin\Debug\NotesDLL.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
