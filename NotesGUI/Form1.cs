@@ -15,7 +15,7 @@ namespace NotesGUI
     {
         public string noteName { get; private set; }
         public int EmptyNote { get; private set; }
-        Manager manager = new Manager();
+       
         public Form1()
         {
             InitializeComponent();
@@ -40,10 +40,15 @@ namespace NotesGUI
 
             Controls.AddRange(Notes.ToArray());
         }
-
+        public string test { get; set; }
         private void Form1_Click(object sender, EventArgs e)
         {
-          
+           
+            File.WriteAllText("FindBtn.txt", $"{(sender as Button).Text}");
+            Form note = new SelectedNote();
+            this.Visible = false;
+            note.ShowDialog();
+            this.Visible = true;
         }
 
         private void notexText_KeyDown(object sender, KeyEventArgs e)
@@ -64,12 +69,13 @@ namespace NotesGUI
                     }
                     else
                     {
+
                         noteName = notexText.Text;
                         notexText.Text = "Enter note's name";
                         notexText.Visible = false;
                         if (MessageBox.Show("Создать пустую заметку?", "INFO", MessageBoxButtons.YesNo) == DialogResult.Yes)
                         {
-                            manager.CreateNote(noteName, "", System.DateTime.UtcNow);
+                            Manager.CreateNote(noteName, "", System.DateTime.UtcNow);
                             Notes.Find(x => x.Text == string.Empty).Visible = true;
                             Notes.Find(x => x.Text == string.Empty).Text = noteName;
 
@@ -81,8 +87,9 @@ namespace NotesGUI
                             openFile.Filter = "Txt(.txt)|*.txt";
                             if (openFile.ShowDialog() == DialogResult.OK)
                             {
-                                manager.CreateNote(noteName, File.ReadAllText(openFile.FileName), System.DateTime.UtcNow);
-
+                                Manager.CreateNote(noteName, File.ReadAllText(openFile.FileName), System.DateTime.UtcNow);
+                                Notes.Find(x => x.Text == string.Empty).Visible = true;
+                                Notes.Find(x => x.Text == string.Empty).Text = noteName;
                             }
                         }
                     }
