@@ -67,10 +67,9 @@ namespace NotesGUI
                         MessageBox.Show("Не по правилам!");
                         notexText.Focus();
                     }
-                    else
+                    if(Notes.Find(x=>x.Text == notexText.Text) == null)
                     {
-
-                        noteName = notexText.Text;
+                        noteName = $"{notexText.Text}";
                         notexText.Text = "Enter note's name";
                         notexText.Visible = false;
                         if (MessageBox.Show("Создать пустую заметку?", "INFO", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -92,6 +91,11 @@ namespace NotesGUI
                                 Notes.Find(x => x.Text == string.Empty).Text = noteName;
                             }
                         }
+                    }
+                    else
+                    {
+
+                        MessageBox.Show("Такая заметка уже есть");
                     }
 
                 }
@@ -151,11 +155,20 @@ namespace NotesGUI
         {
             if(e.KeyCode == Keys.Enter)
             {
-                Manager.DeleteNote($"{deleteNote.Text}\n");
-                Notes.Find(x => x.Text == $"{deleteNote.Text}\n").Visible = false;
-                Notes.Find(x => x.Text != string.Empty).Text = string.Empty;
-                deleteNote.Text = "Enter note's name";
-                deleteNote.Visible = false;
+                if(Notes.Find(x=>x.Text == deleteNote.Text) == null)
+                {
+                   
+                }
+                else
+                {
+                    Manager.DeleteNote($"{deleteNote.Text}");
+                    Notes.Find(x => x.Text == $"{deleteNote.Text}").Visible = false;
+                    Notes.Find(x => x.Text == $"{deleteNote.Text}").Text = string.Empty;
+
+                    deleteNote.Text = "Enter note's name";
+                    deleteNote.Visible = false;
+                }
+              
             }
         }
     }

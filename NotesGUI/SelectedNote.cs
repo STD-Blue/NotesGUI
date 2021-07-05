@@ -25,5 +25,61 @@ namespace NotesGUI
         {
             File.WriteAllText("FindBtnText.txt", textBox1.Text);
         }
+
+        private void fontToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+           
+            using (FontDialog font = new FontDialog())
+            {
+                if(font.ShowDialog() == DialogResult.OK)
+                {
+                    textBox1.Font = font.Font;
+                }
+            }
+        }
+
+        private void textColorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (ColorDialog color = new ColorDialog())
+            {
+                if(color.ShowDialog() == DialogResult.OK)
+                {
+                    textBox1.ForeColor = color.Color;
+                }
+            }
+        }
+
+        private void backColorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (ColorDialog color = new ColorDialog())
+            {
+                if (color.ShowDialog() == DialogResult.OK)
+                {
+                    textBox1.BackColor = color.Color;
+                }
+            }
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog save = new SaveFileDialog())
+            {
+                save.Filter = "Txt(.txt)|*.txt";
+                if(save.ShowDialog() == DialogResult.OK)
+                {
+                    File.WriteAllText($"{save.FileName}.txt", textBox1.Text);
+                }
+            }
+        }
+
+        private void backToNotesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
+        private void exitToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
+        }
     }
 }
