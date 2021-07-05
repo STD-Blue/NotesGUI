@@ -35,7 +35,7 @@ namespace NotesGUI
         System.ComponentModel.ComponentResourceManager resources;
         private void InitializeComponent()
         {
-            resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.searchTextBox = new System.Windows.Forms.TextBox();
             this.searchButton = new System.Windows.Forms.Button();
             this.bottomPanel = new System.Windows.Forms.Panel();
@@ -63,10 +63,10 @@ namespace NotesGUI
             // 
             // bottomPanel
             // 
+            resources.ApplyResources(this.bottomPanel, "bottomPanel");
             this.bottomPanel.BackColor = System.Drawing.Color.Gray;
             this.bottomPanel.Controls.Add(this.button2);
             this.bottomPanel.Controls.Add(this.button1);
-            resources.ApplyResources(this.bottomPanel, "bottomPanel");
             this.bottomPanel.Name = "bottomPanel";
             // 
             // button2
@@ -82,45 +82,41 @@ namespace NotesGUI
             // 
             // menuStrip1
             // 
+            resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.languageToolStripMenuItem1});
-            resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.Name = "menuStrip1";
             // 
             // languageToolStripMenuItem1
             // 
+            resources.ApplyResources(this.languageToolStripMenuItem1, "languageToolStripMenuItem1");
             this.languageToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.arToolStripMenuItem1,
             this.esToolStripMenuItem1,
             this.ruToolStripMenuItem1,
             this.enUSToolStripMenuItem});
             this.languageToolStripMenuItem1.Name = "languageToolStripMenuItem1";
-            resources.ApplyResources(this.languageToolStripMenuItem1, "languageToolStripMenuItem1");
             // 
             // arToolStripMenuItem1
             // 
-            this.arToolStripMenuItem1.Name = "arToolStripMenuItem1";
-            this.arToolStripMenuItem1.Click += LanguageToolStripMenuItem_Click;
             resources.ApplyResources(this.arToolStripMenuItem1, "arToolStripMenuItem1");
+            this.arToolStripMenuItem1.Name = "arToolStripMenuItem1";
             // 
             // esToolStripMenuItem1
             // 
-            this.esToolStripMenuItem1.Name = "esToolStripMenuItem1";
-            this.esToolStripMenuItem1.Click += LanguageToolStripMenuItem_Click;
             resources.ApplyResources(this.esToolStripMenuItem1, "esToolStripMenuItem1");
-            //
+            this.esToolStripMenuItem1.Name = "esToolStripMenuItem1";
+            // 
             // ruToolStripMenuItem1
             // 
-            this.ruToolStripMenuItem1.Name = "ruToolStripMenuItem1";
-            this.ruToolStripMenuItem1.Click += LanguageToolStripMenuItem_Click;
             resources.ApplyResources(this.ruToolStripMenuItem1, "ruToolStripMenuItem1");
+            this.ruToolStripMenuItem1.Name = "ruToolStripMenuItem1";
             // 
             // enUSToolStripMenuItem
             // 
-            this.enUSToolStripMenuItem.Name = "enUSToolStripMenuItem";
-            this.enUSToolStripMenuItem.Click += LanguageToolStripMenuItem_Click;
             resources.ApplyResources(this.enUSToolStripMenuItem, "enUSToolStripMenuItem");
+            this.enUSToolStripMenuItem.Name = "enUSToolStripMenuItem";
             // 
             // Form1
             // 
