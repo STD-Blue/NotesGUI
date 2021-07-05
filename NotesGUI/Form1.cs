@@ -108,13 +108,7 @@ namespace NotesGUI
             notexText.Focus();
         }
 
-        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
-            SettingsForm settings = new SettingsForm();
-            settings.ShowDialog();
-        }
-
+      
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             Manager.SaveAllNotes("SaveNotes.txt");
@@ -170,6 +164,34 @@ namespace NotesGUI
                 }
               
             }
+        }
+
+        private void backColorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (ColorDialog color = new ColorDialog())
+            {
+                if(color.ShowDialog() == DialogResult.OK)
+                {
+                    this.BackColor = color.Color;
+                }
+            }
+        }
+
+        private void backImageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFile = new OpenFileDialog())
+            {
+                openFile.Filter = "Png(.png)|*.png|Jpg(.jpg)|*.jpg";
+                if(openFile.ShowDialog() == DialogResult.OK)
+                {
+                    this.BackgroundImage = Image.FromFile(openFile.FileName);
+                }
+            }
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }

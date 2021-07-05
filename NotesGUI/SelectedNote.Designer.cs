@@ -141,7 +141,7 @@ namespace NotesGUI
             this.ClientSize = new System.Drawing.Size(468, 450);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.menuStrip1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "SelectedNote";
             this.Text = "SelectedNote";
