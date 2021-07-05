@@ -25,24 +25,30 @@ namespace NotesGUI
             {
                 for (int j = 0; j < 5; j++)
                 {
-                    
                     Notes.Add(new Button()
                     {
                         Width = 130,
                         Height = 100,
-                        Location = new Point(x += 130, y)
-                    }); ;
+                        Location = new Point(x += 130, y),
+                        Visible = false
+                    });
+                    Notes.Last().Click += Form1_Click;
                 }
                 x = -130;
                 y += 100;
             }
+
             Controls.AddRange(Notes.ToArray());
         }
 
-      
+        private void Form1_Click(object sender, EventArgs e)
+        {
+          
+        }
+
         private void notexText_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
                 if (notexText.Text.Length < 3)
                 {
@@ -51,7 +57,7 @@ namespace NotesGUI
                 }
                 else
                 {
-                    if(notexText.Text.Equals("Enter note's name"))
+                    if (notexText.Text.Equals("Enter note's name"))
                     {
                         MessageBox.Show("Не по правилам!");
                         notexText.Focus();
@@ -64,6 +70,8 @@ namespace NotesGUI
                         if (MessageBox.Show("Создать пустую заметку?", "INFO", MessageBoxButtons.YesNo) == DialogResult.Yes)
                         {
                             manager.CreateNote(noteName, "", System.DateTime.UtcNow);
+                            Notes.Find(x => x.Text == string.Empty).Visible = true;
+                            Notes.Find(x => x.Text == string.Empty).Text = noteName;
 
                         }
                         else
@@ -78,7 +86,7 @@ namespace NotesGUI
                             }
                         }
                     }
-                  
+
                 }
             }
         }
@@ -95,6 +103,6 @@ namespace NotesGUI
             settings.ShowDialog();
         }
 
-        
+
     }
 }
