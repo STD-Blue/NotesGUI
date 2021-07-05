@@ -23,7 +23,7 @@ namespace NotesGUI
             int x = -130, y = 100;
             for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < 5; j++)
+                for (int j = 0; j < 4; j++)
                 {
                     Notes.Add(new Button()
                     {
@@ -106,25 +106,57 @@ namespace NotesGUI
 
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            
             SettingsForm settings = new SettingsForm();
             settings.ShowDialog();
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Manager.SaveAllNotes("TestSave");
+            Manager.SaveAllNotes("SaveNotes.txt");
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
-            Manager.ReadNotesFromFile("TestSave.txt");
-            for (int i = 0; i < Manager.notes.Count; i++)
+            if (File.Exists("SaveNotes.txt"))
             {
-                Notes.Find(x => x.Text == string.Empty).Visible = true;
-                Notes.Find(x => x.Text == string.Empty).Text = Manager.notes[i].NoteName;
-            }
+                if (File.ReadAllText("SaveNotes.txt").Length != 0)
+                {
+                    Manager.ReadNotesFromFile("SaveNotes.txt");
 
+                    for (int i = 0; i < Manager.notes.Count; i++)
+                    {
+                        Notes.Find(x => x.Text == string.Empty).Visible = true;
+                        Notes.Find(x => x.Text == string.Empty).Text = Manager.notes[i].NoteName;
+                    }
+                }
+            }
+          
+
+        }
+
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+            Notes.Find(x => x.Text.Equals(searchTextBox.Text)).Focus();
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            deleteNote.Visible = true;
+            deleteNote.Focus();
+            deleteNote.KeyDown += DeleteNote_KeyDown;
+        }
+
+        private void DeleteNote_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                Manager.DeleteNote($"{deleteNote.Text}\n");
+                Notes.Find(x => x.Text == $"{deleteNote.Text}\n").Visible = false;
+                Notes.Find(x => x.Text != string.Empty).Text = string.Empty;
+                deleteNote.Text = "Enter note's name";
+                deleteNote.Visible = false;
+            }
         }
     }
 }

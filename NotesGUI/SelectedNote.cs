@@ -18,7 +18,12 @@ namespace NotesGUI
         {
             InitializeComponent();
             textBox1.Text = Manager.TakeTextNote(File.ReadAllText("FindBtn.txt"));
+
         }
 
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            File.WriteAllText("FindBtnText.txt", textBox1.Text);
+        }
     }
 }

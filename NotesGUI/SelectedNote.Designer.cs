@@ -50,6 +50,7 @@ namespace NotesGUI
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(444, 412);
             this.textBox1.TabIndex = 0;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // menuStrip1
             // 
@@ -75,7 +76,7 @@ namespace NotesGUI
             // fontToolStripMenuItem1
             // 
             this.fontToolStripMenuItem1.Name = "fontToolStripMenuItem1";
-            this.fontToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.fontToolStripMenuItem1.Size = new System.Drawing.Size(120, 22);
             this.fontToolStripMenuItem1.Text = "Font";
             // 
             // colorToolStripMenuItem
@@ -84,25 +85,25 @@ namespace NotesGUI
             this.textColorToolStripMenuItem,
             this.backColorToolStripMenuItem});
             this.colorToolStripMenuItem.Name = "colorToolStripMenuItem";
-            this.colorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.colorToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.colorToolStripMenuItem.Text = "Color";
             // 
             // textColorToolStripMenuItem
             // 
             this.textColorToolStripMenuItem.Name = "textColorToolStripMenuItem";
-            this.textColorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.textColorToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.textColorToolStripMenuItem.Text = "Text Color";
             // 
             // backColorToolStripMenuItem
             // 
             this.backColorToolStripMenuItem.Name = "backColorToolStripMenuItem";
-            this.backColorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.backColorToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.backColorToolStripMenuItem.Text = "Back Color";
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.saveToolStripMenuItem.Text = "Save(txt)";
             // 
             // exitToolStripMenuItem
@@ -118,13 +119,13 @@ namespace NotesGUI
             // backToNotesToolStripMenuItem
             // 
             this.backToNotesToolStripMenuItem.Name = "backToNotesToolStripMenuItem";
-            this.backToNotesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.backToNotesToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.backToNotesToolStripMenuItem.Text = "Back to notes";
             // 
             // exitToolStripMenuItem1
             // 
             this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
-            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(145, 22);
             this.exitToolStripMenuItem1.Text = "Exit";
             // 
             // SelectedNote

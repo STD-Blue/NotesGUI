@@ -50,6 +50,7 @@ namespace NotesGUI
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.searchButton = new System.Windows.Forms.Button();
             this.notexText = new System.Windows.Forms.TextBox();
+            this.deleteNote = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -131,6 +132,7 @@ namespace NotesGUI
             this.deleteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Shift | System.Windows.Forms.Keys.Delete)));
             this.deleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // settingsToolStripMenuItem
             // 
@@ -147,6 +149,7 @@ namespace NotesGUI
             this.searchButton.Size = new System.Drawing.Size(75, 20);
             this.searchButton.TabIndex = 1;
             this.searchButton.Text = "Поиск";
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
             // notexText
             // 
@@ -158,11 +161,21 @@ namespace NotesGUI
             this.notexText.Visible = false;
             this.notexText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.notexText_KeyDown);
             // 
+            // deleteNote
+            // 
+            this.deleteNote.Location = new System.Drawing.Point(127, 248);
+            this.deleteNote.Name = "deleteNote";
+            this.deleteNote.Size = new System.Drawing.Size(213, 20);
+            this.deleteNote.TabIndex = 5;
+            this.deleteNote.Text = "Enter note\'s name";
+            this.deleteNote.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(524, 661);
+            this.Controls.Add(this.deleteNote);
             this.Controls.Add(this.notexText);
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.searchTextBox);
@@ -208,6 +221,7 @@ namespace NotesGUI
         private ToolStripMenuItem settingsToolStripMenuItem;
         private Button searchButton;
         private TextBox notexText;
+        private TextBox deleteNote;
     }
 }
 
